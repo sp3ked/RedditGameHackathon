@@ -1,20 +1,16 @@
-export default {
-    async postLeaderboard(context: any) {
-      const { reddit } = context;
-      const leaderboard = `
-        🏆 **Word Chain Leaderboard** 🏆
+const leaderboardData = [
+    { username: 'UserA', score: 100 },
+    { username: 'UserB', score: 85 },
+    { username: 'UserC', score: 75 },
+  ];
   
-        1. UserA - 25 points
-        2. UserB - 20 points
-        3. UserC - 15 points
-      `;
-  
-      const subreddit = await reddit.getCurrentSubreddit();
-      await reddit.submitPost({
-        title: 'Word Chain Leaderboard',
-        subredditName: subreddit.name,
-        text: leaderboard,
-      });
+  const Leaderboard = {
+    getLeaderboard: () => {
+      return leaderboardData
+        .map((entry, index) => `${index + 1}. ${entry.username} - ${entry.score} points`)
+        .join('\n');
     },
   };
+  
+  export default Leaderboard;
   

@@ -16,7 +16,7 @@ Devvit.addMenuItem({
     const { reddit } = context;
     await reddit.submitPost({
       title: 'Puzzle Game Leaderboard',
-      text: 'Leaderboard content goes here.',
+      text: Leaderboard.getLeaderboard(),
     });
   },
 });
